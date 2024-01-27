@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Settings</title>
+</head>
+<body>
+    <header>
+        <h1>Server Settings</h1>
+    </header>
+    <main>
+        <section class="server-info">
+            <h2>Server Information</h2>
+            <p>Welcome, <%= user.username %>!</p>
+            <p>Server ID: <%= guildId %></p>
+            <p>Member Count: <%= memberCount %></p>
+            <p>Role Count: <%= roleCount %></p>
+            <p>Channel Count: <%= channelCount %></p>
+        </section>
+    
+        <section class="join-leave-info">
+            <h2>Join/Leave Information</h2>
+            <p>Members joined in the last 24 hours: <%= join1Count %></p>
+            <p>Members joined in the last 7 days: <%= join2Count %></p>
+            <p>Members left in the last 24 hours: <%= leave1Count %></p>
+            <p>Members left in the last 7 days: <%= leave2Count %></p>
+        </section>
+    
+        <aside class="sidebar">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="/server/<%= guild.id %>/welcome">Welcome & Leave</a></li>
+                <li><a href="/server/<%= guild.id %>/AutoRole">Auto Roles</a></li>
+            </ul>
+        </aside>
+    </main>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer>
+        <p>&copy; 2024 @niro0353</p>
+    </footer>
+
+
+
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #181818;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+p {
+    color: #fff;
+}
+footer {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.server-info, .join-leave-info {
+    margin-bottom: 30px;
+}
+
+.server-info h2, .join-leave-info h2 {
+    color: #3498db;
+}
+
+/* أنماط CSS للجانب */
+.sidebar {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sidebar h2 {
+    color: #3498db;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #3498db;
+}
+
+
+    </style>
+</body>
+</html>

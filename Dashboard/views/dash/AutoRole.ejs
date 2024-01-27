@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoRole Settings</title>
+    <!-- يمكنك إضافة روابط لأي مكتبات أو أنماط إضافية هنا -->
+</head>
+<body>
+    <header>
+        <h1>AutoRole Settings</h1>
+    </header>
+    <main>
+        <section class="auto-role-settings">
+            <h2>AutoRole Settings</h2>
+            <form action="/server/<%= guildId %>/AutoRole" method="post">
+                <label for="selectedRole1">Mamber Role:</label>
+                <select name="selectedRole1" id="selectedRole1" class="charts-card-select">
+                    <option value="" disabled selected>Select</option>
+                    <% guild.roles.cache.each(role => { %>
+                        <option value="<%= role.id %>" <%= serverSettings.selectedRole1 === role.id ? 'selected' : '' %>><%= role.name %></option>
+                    <% }); %>
+                </select>
+
+                <label for="selectedRole2">Bots Role:</label>
+                <select name="selectedRole2" id="selectedRole2" class="charts-card-select">
+                    <option value="" disabled selected>Select</option>
+                    <% guild.roles.cache.each(role => { %>
+                        <option value="<%= role.id %>" <%= serverSettings.selectedRole2 === role.id ? 'selected' : '' %>><%= role.name %></option>
+                    <% }); %>
+                </select>
+
+                <label for="isCodeEnabled">Enable Code for AutoRole:</label>
+                <input type="checkbox" id="isCodeEnabled" name="isCodeEnabled" <%= serverSettings.isCodeEnabled ? 'checked' : '' %>>
+
+                <button type="submit">Save AutoRole Settings</button>
+            </form>
+        </section>
+        <aside class="sidebar">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="/server/<%= guild.id %>">server-info</a></li>
+                <li><a href="/server/<%= guild.id %>/welcome">Welcome & Leave</a></li>
+            </ul>
+        </aside>
+    </main>
+    
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+    <footer>
+        <p>&copy; 2024 @niro0353</p>
+    </footer>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #181818;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .auto-role-settings {
+            margin-bottom: 30px;
+        }
+
+        .auto-role-settings h2 {
+            color: #3498db;
+        }
+
+        form {
+            display: grid;
+            grid-gap: 10px;
+        }
+
+        label {
+            color: #fff;
+        }
+
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* أنماط CSS للجانب */
+.sidebar {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sidebar h2 {
+    color: #3498db;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #3498db;
+}
+
+    </style>
+</body>
+</html>

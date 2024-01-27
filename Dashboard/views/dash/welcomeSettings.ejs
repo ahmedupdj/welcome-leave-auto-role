@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome & Leave Settings</title>
+    <!-- يمكنك إضافة روابط لأي مكتبات أو أنماط إضافية هنا -->
+</head>
+<body>
+    <header>
+        <h1>Welcome & Leave Settings</h1>
+    </header>
+    <main>
+        <section class="welcome-settings">
+            <h2>Welcome Settings</h2>
+            <form action="/server/<%= guildId %>/welcome" method="post">
+                <label for="welcomeChannel">Welcome Channel:</label>
+                <select name="welcomeChannel" id="welcomeChannel" class="charts-card-select">
+                    <option value="" disabled selected>Select</option>
+                    <% guild.channels.cache.filter(channel => channel.type === 0).each(channel => { %>
+                        <option value="<%= channel.id %>" <%= serverSettings.welcomeChannel === channel.id ? 'selected' : '' %>><%= channel.name %></option>
+                    <% }); %>
+                </select>                
+                <label for="welcomeMessage">Welcome Message:</label>
+                <textarea id="welcomeMessage" name="welcomeMessage"><%= serverSettings.welcomeMessage %></textarea>
+                
+                <label for="isCodeEnabled">Enable Code for Welcome Message:</label>
+                <input type="checkbox" id="isCodeEnabled" name="isCodeEnabled" <%= serverSettings.isCodeEnabled ? 'checked' : '' %>>
+                
+              
+           
+        </section>
+        
+        <section class="leave-settings">
+            <h2>Leave Settings</h2>
+            
+                <label for="leaveChannel">Leave Channel:</label>
+                <select name="leaveChannel" id="leaveChannel" class="charts-card-select">
+                    <option value="" disabled selected>Select</option>
+                    <% guild.channels.cache.filter(channel => channel.type === 0).each(channel => { %>
+                        <option value="<%= channel.id %>" <%= serverSettings.leaveChannel === channel.id ? 'selected' : '' %>><%= channel.name %></option>
+                    <% }); %>
+                </select>
+                <br><br>
+                <label for="leaveMessage">Leave Message:</label>
+                <textarea id="leaveMessage" name="leaveMessage"><%= serverSettings.leaveMessage %></textarea>
+                
+                <label for="isCodeEnabledLeave">Enable Code for Leave Message:</label>
+                <input type="checkbox" id="isCodeEnabledLeave" name="isCodeEnabledLeave" <%= serverSettings.isCodeEnabledLeave ? 'checked' : '' %>>
+                
+                <button type="submit">Save Leave Settings</button>
+            </form>
+        </section>
+        <aside class="sidebar">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="/server/<%= guild.id %>">server-info</a></li>
+                <li><a href="/server/<%= guild.id %>/AutoRole">Auto Roles</a></li>
+            </ul>
+        </aside>
+    </main>
+    
+    <br><br><br><br><br><br><br>
+    <footer>
+        <p>&copy; 2024 @niro0353</p>
+    </footer>
+
+    <style>
+        .sidebar {
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sidebar h2 {
+    color: #3498db;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #3498db;
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #181818;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .welcome-settings, .leave-settings {
+            margin-bottom: 30px;
+        }
+
+        .welcome-settings h2, .leave-settings h2 {
+            color: #3498db;
+        }
+
+        form {
+            display: grid;
+            grid-gap: 10px;
+        }
+
+        label {
+            color: #fff;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* تخصيص أزرار الحالة المرتفعة */
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</body>
+</html>

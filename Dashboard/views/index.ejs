@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Bot Dashboard</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="https://discord.gg/qeHmVNGaXk" target="_blank">Support</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="welcome-section">
+                <h2 style="color: #ffff;">Welcome to the Dashboard!</h2>
+                <p style="color: #ffff;">This is the main page of your custom dashboard.</p>
+            </section>
+        
+            <section class="custom-content">
+                <img src="https://cdn.discordapp.com/avatars/947952564803096676/0e4f85444411307d991b3890b20ec292.png?size=1024" height="150px" width="150px" alt="Custom Image">
+                <p style="color: #ffff; font-size: 30px;">Spacial Bot</p>
+                <div class="custom-links">
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=938852115051327559&permissions=8&scope=bot+applications.commands" target="_blank" id="customLink1">Add Bot</a>
+                    <% if (user) { %>
+                    <a href="/dashboard" id="customLink1">Dashboard</a>
+                    <% } else { %>
+                        <a href="/login" id="customLink1">Login</a>
+                        <% } %>
+                </div>
+            </section>
+        </main>
+        
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
+        <footer>
+            <p>&copy; 2024 @niro0353</p>
+        </footer>
+    </div>
+
+
+
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #181818;
+}
+
+.dashboard-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #3498db;
+    color: #fff;
+}
+
+nav {
+    background-color: #2c3e50;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #ecf0f1;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+}
+
+main {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.custom-links {
+    display: flex;
+    gap: 10px;
+}
+
+
+#customLink1 {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+#customLink1:hover { 
+    background-color: #2980b9;
+
+}
+
+
+*, ::after, ::before {
+        box-sizing: border-box;
+    }
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+    ::-webkit-resizer {
+        background-color: #666;
+    }
+    ::-webkit-scrollbar {
+        width: 12px;
+        height: 3px;
+    }
+    ::-webkit-scrollbar-button {
+        display: none;
+        background-color: #000;
+    }
+    ::-webkit-scrollbar-corner {
+        background-color: #2f3136;
+    }
+    ::-webkit-scrollbar-thumb {
+        height: 50px;
+        background-color: #6d6d79;
+        border-radius: 5px;
+        border-top: solid;
+        border-bottom: solid;
+        border-color: #36393f;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: hsla(240,5%,45%,.3);
+    }
+    ::-webkit-scrollbar-track-piece {
+        background-color: #2f3136;
+    }
+
+    </style>
+</body>
+</html>
