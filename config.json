@@ -1,3 +1,6 @@
 {
-    "token": "Token"
+    "token": "Token",
+    "clientID": "Id",
+    "clientSecret": "",
+    "callbackURL":"http://localhost:3000/callback"
 }
