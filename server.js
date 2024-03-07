@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { token,clientID,clientSecret,callbackURL } = require('./config.json')
 
 const client = new Discord.Client({
     intents: [
@@ -19,9 +20,9 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 passport.use(new DiscordStrategy({
-    clientID: 'Id',
-    clientSecret: '',
-    callbackURL: 'http://localhost:3000/callback',
+    clientID: clientID,
+    clientSecret: clientSecret,
+    callbackURL: callbackURL,
     scope: ['identify', 'guilds'],
 }, (accessToken, refreshToken, profile, done) => {
     return done(null, profile);
@@ -50,7 +51,6 @@ app.use(passport.session());
 app.set('views', path.join(__dirname, 'Dashboard', 'views'));
 app.set('view engine', 'ejs');
 app.get("/login", passport.authenticate('discord'), (req, res) => {
-    // تحديد مسار العودة بشكل دينامي أو ثابت (اعتمادًا على متطلبات تطبيقك)
     req.session.returnTo = req.headers.referer || '/dashboard';
     res.redirect(req.session.returnTo);
 });
@@ -108,17 +108,13 @@ async function fetchServerStats(guild) {
 }
 const createDefaultSettings = async (guildId) => {
     try {
-        // افحص ما إذا كان هناك سيرفر بالفعل في قاعدة البيانات باستخدام guildId
         const existingSettings = await ServerSettings.findOne({ guildId });
 
-        // إذا لم يكن هناك إعدادات بالفعل، قم بإنشاء إعدادات افتراضية
         if (!existingSettings) {
             const defaultSettings = {
                 guildId: guildId,
-                // اضف أي إعدادات أخرى تحتاجها
             };
 
-            // قم بإنشاء الإعدادات في قاعدة البيانات
             await ServerSettings.create(defaultSettings);
         }
     } catch (error) {
@@ -127,9 +123,8 @@ const createDefaultSettings = async (guildId) => {
 };
 async function fetchStoredSettingsFromDatabase(guildId) {
     try {
-        // استعلام قاعدة البيانات للحصول على storedSettings
         const storedSettings = await ServerSettings.findOne({ guildId });
-        return storedSettings || {}; // إذا لم يتم العثور على storedSettings، استرجع كائن فارغ
+        return storedSettings || {}; 
     } catch (error) {
         console.error('Error fetching storedSettings from database:', error);
         throw error;
@@ -145,7 +140,6 @@ app.get('/server/:guildId', checkAuth, async (req, res) => {
 
         const guild = client.guilds.cache.get(guildId);
 
-        // التحقق من أن guild تم تحميله بشكل صحيح
         if (!guild) {
             throw new Error('Guild not found');
         }
@@ -156,7 +150,6 @@ app.get('/server/:guildId', checkAuth, async (req, res) => {
             await createDefaultSettings(guildId);
         }
 
-        // التحقق من وجود storedSettings
         const storedSettings = await fetchStoredSettingsFromDatabase(guildId);
 
         // التحقق من وجود storedSettings.leaves
@@ -167,7 +160,6 @@ app.get('/server/:guildId', checkAuth, async (req, res) => {
         const join2 = [];
         const leave2 = [];
         
-        // استخدام for-of loop بدلاً من forEach للتحقق من وجود user[1].joinedAt
         for (const user of guild.members.cache) {
             if (user[1].joinedAt) {
                 let day = 7 * 86400000;
@@ -184,7 +176,6 @@ app.get('/server/:guildId', checkAuth, async (req, res) => {
             }
         }
 
-        // استخدام الـ map بدلاً من forEach للتحقق من وجود timestamp في الرسائل
         leaves.map(async (leave) => {
             let xx = leave - Date.now();
             if (Date.now() > leave) {
