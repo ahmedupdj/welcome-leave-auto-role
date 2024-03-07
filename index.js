@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-
+const { token } = require('./config.json')
 const client = new Discord.Client({
     intents: [
         Object.keys(Discord.GatewayIntentBits)
@@ -151,4 +151,4 @@ client.on('guildMemberAdd', async (member) => {
 //Dashboard
 const server = require('./server');
 
-client.login('TOken');
+client.login(token);
